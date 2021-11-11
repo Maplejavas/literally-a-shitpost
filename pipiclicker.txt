@@ -251,7 +251,7 @@ Upgrades
 		passive:multiply yield of butty by 2
 		passive:multiply yield of ac by 2
 		passive:multiply yield of krimins by 2
-		req:(buttys>=10 or aces>=10 or krimins>=10)
+		req:(buttys>=10 or ac>=10 or krimins>=10)
 		
 	*buildingUpgrade2
 		name:Prime grade hay
@@ -261,7 +261,7 @@ Upgrades
 		passive:multiply yield of butty by 2
 		passive:multiply yield of ac by 2
 		passive:multiply yield of krimins by 2
-		req:(buttys>=50 or aces>=50 or krimins>=50)
+		req:(buttys>=50 or ac>=50 or krimins>=50)
 		
 	*buildingUpgrade3
 		name:Shredded newspapers
@@ -271,7 +271,7 @@ Upgrades
 		passive:multiply yield of butty by 2
 		passive:multiply yield of ac by 2
 		passive:multiply yield of krimins by 2
-		req:(buttys>=100 or aces>=100 or krimins>=100)
+		req:(buttys>=100 or ac>=100 or krimins>=100)
 		
 	*buildingUpgrade4
 		name:Pretty fences
