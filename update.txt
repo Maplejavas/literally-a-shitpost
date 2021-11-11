@@ -10,7 +10,7 @@ Settings
 	background:https://cdn.discordapp.com/attachments/555753111348576264/908445205320056852/unknown.png
 	building cost increase:105%
 	building cost refund:100%
-	spritesheet:icons, 64 by 64, https://cdn.discordapp.com/attachments/555753111348576264/908449964152201216/er.png
+	spritesheet:icons, 64 by 64, https://cdn.discordapp.com/attachments/555753111348576264/908453185520271440/fucjk.png
 	stylesheet:stuff/basic.css
 
 Layout
@@ -23,7 +23,7 @@ Buttons
 		on click:anim icon wobble
 		on click:yield 1 pipi
 		on click:if (have goldenTouch and chance(1%)) yield 1 meseta
-		icon:https://cdn.discordapp.com/attachments/555753111348576264/908445638209966120/611934004798816256CUnetnoise_scaleLevel3x8.000000.png
+		icon:https://cdn.discordapp.com/attachments/555753111348576264/908453750815989801/pipier.png
 		no text
 		class:bigButton hasFlares
 		icon class:shadowed
@@ -51,7 +51,7 @@ Shinies
 		movement:onRight moveLeft fade bounce:0.05
 		frequency:60
 		frequency variation:30
-		icon:https://cdn.discordapp.com/attachments/555753111348576264/908447351436349550/859003798453223424.gif
+		icon:https://cdn.discordapp.com/attachments/555753111348576264/908453751101198428/crap.gif
 		class:bigButton
 		on click:
 			$boost=1
