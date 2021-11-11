@@ -10,7 +10,7 @@ Settings
 	background:https://cdn.discordapp.com/attachments/555753111348576264/908445205320056852/unknown.png
 	building cost increase:105%
 	building cost refund:100%
-	spritesheet:icons, 48 by 48, https://cdn.discordapp.com/attachments/555753111348576264/908453185520271440/fucjk.png
+	spritesheet:icons, 48 by 48, https://cdn.discordapp.com/attachments/555753111348576264/908454807113703484/hell.png
 	stylesheet:stuff/basic.css
 
 Layout
