@@ -1,0 +1,430 @@
+Let's make a game!
+	name:pipi Clicker
+	by:Orteil
+	desc:pipi moment
+	created:25/7/2017
+	updated:24/10/2017
+	version:1
+
+Settings
+	background:https://cdn.discordapp.com/attachments/555753111348576264/908445205320056852/unknown.png
+	building cost increase:105%
+	building cost refund:10000000000%
+	spritesheet:icons, 48 by 48, https://cdn.discordapp.com/attachments/555753111348576264/908458397433729035/kuso.png
+	stylesheet:stuff/basic.css
+
+Layout
+	use default
+		
+Buttons
+	*pipiButton
+		name:Make a pipi
+		desc:pipi
+		on click:anim icon wobble
+		on click:yield 1 pipi
+		on click:if (have goldenTouch and chance(1%)) yield 1 meseta
+		icon:https://cdn.discordapp.com/attachments/555753111348576264/908453750815989801/pipier.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
+		
+Resources
+	*pipi|pipis
+		name:pipi|pipis
+		desc:pipi
+		icon:icons[0,0]
+		class:noBackground
+		show earned
+		
+	*meseta|mesetas
+		name:meseta|meseta
+		desc:richmins
+		icon:icons[0,1]
+		class:noBackground
+		hidden when 0
+		
+Shinies
+	*luckypipi
+		on click:log Woop
+		movement:onRight moveLeft fade bounce:0.05
+		frequency:60
+		frequency variation:30
+		icon:https://cdn.discordapp.com/attachments/555753111348576264/908453751101198428/crap.gif
+		class:bigButton
+		on click:
+			$boost=1
+			if (have clover) $boost=4
+			if (chance(25%))
+				//get at least 7, or between 1 and 3 minutes of our pipi production
+				$amount=max(7,random(pipis:ps*60*1,pipis:ps*60*3))*$boost
+				toast The lucky pipi grants you<//><b>[$amount] pipis</b>.
+				yield $amount pipis
+			else
+				$amount=1*$boost
+				toast The lucky pipi grants you<//><b>[$amount] meseta[s?$amount]</b>!
+				yield $amount meseta
+			end
+		end
+
+Buildings
+	*TEMPLATE
+		on click:anim glow
+		
+	*butty|buttys
+		name:butty|buttys
+		desc:buttydance<//><b>Effect:</b><.>pipi
+		icon:icons[3,0]
+		cost:15 pipis
+		on tick:yield 0.1 pipi
+		unlocked
+	
+	*ac|ac
+		name:ac|ac
+		desc:wtf pay2winfok<//><b>Effect:</b><.>pipi.
+		icon:icons[3,1]
+		cost:100 pipis
+		on tick:yield 0.5 pipis
+		req:100 pipis:earned
+	
+	*krimins|krimins
+		name:krimins|krimins
+		desc:wao it krimins.<//><b>Effect:</b><.>Pipi.
+		icon:icons[3,2]
+		cost:600 pipis
+		on tick:yield 5 pipis
+		req:600 pipis:earned
+	
+	*durgon|durgons
+		name:durgon|durgon
+		desc:woa it durgon wao<//><b>Effect:</b><.>Pipi
+		icon:icons[3,3]
+		cost:4000 pipis
+		on tick:yield 12 pipis
+		req:4000 pipis:earned
+	
+	*kasia|kasia
+		name:kasia|kasia
+		desc:woa found the kasia.<//><b>pipis
+		icon:icons[3,4]
+		cost:20000 pipis
+		on tick:yield 90 pipis
+		req:20000 pipis:earned
+	
+	*greeny|greeny
+		name:greeny|greeny
+		desc:lol trolled<//><b>Effect:</b><.>pi
+		icon:icons[3,5]
+		cost:200000 pipis, 1 meseta
+		on tick:yield 300 pipis
+		req:200000 pipis:earned and independenceDay
+		
+	*fox|fox
+		name:fox|fox
+		desc:some fox idk<//><b>Effect:</b><.>pi.
+		icon:icons[3,6]
+		cost:3000000 pipis, 4 mesetas
+		on tick:yield 1000 pipis
+		req:3000000 pipis:earned and independenceDay
+		
+	*fatpy|fatpy
+		name:fatpy|fatpy
+		desc:fat lol.<//><b>Effect:</b><.>p
+		icon:icons[3,7]
+		cost:70000000 pipis, 16 mesetas
+		on tick:yield 4000 pipis
+		on tick:if (have moonGardens) yield 0.01 meseta
+		req:70000000 pipis:earned and independenceDay
+		
+	*bob
+		name:bob
+		text:bob ([this]%)
+		desc:make a bob<//><b>bob [this]% complete.</b>
+		icon:icons[3,8]
+		cost:300000000 pipis, 100 mesetas
+		req:70000000 pipis:earned and independenceDay
+		limit:100
+		cost increase:105%
+		
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+	
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+	
+	*parsley
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>+1 pipi/click
+		icon:icons[1,1]
+		cost:100 pipis
+		passive:increase pipi yield of pipiButton by 1
+		req:10 pipis:earned
+		
+	*spinach
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>+1 pipi/click
+		icon:icons[1,2]
+		cost:200 pipis
+		passive:increase pipi yield of pipiButton by 1
+		req:50 pipis:earned
+		
+	*lettuce
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>+1 pipi/click
+		icon:icons[1,3]
+		cost:400 pipis
+		passive:increase pipi yield of pipiButton by 1
+		req:200 pipis:earned
+		
+	*broccoli
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x2<.>pipi production +5%
+		icon:icons[1,4]
+		cost:3000 pipis
+		passive:multiply pipi yield of pipiButton by 2
+		passive:multiply yield of pipis by 1.05
+		req:1000 pipis:earned
+		
+	*apple
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x1.5<.>pipi production +5%
+		icon:icons[1,5]
+		cost:10000 pipis
+		passive:multiply pipi yield of pipiButton by 1.5
+		passive:multiply yield of pipis by 1.05
+		req:1000 pipis:earned
+		
+	*radish
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x1.5<.>pipi production +5%
+		icon:icons[1,6]
+		cost:50000 pipis
+		passive:multiply pipi yield of pipiButton by 1.5
+		passive:multiply yield of pipis by 1.05
+		req:10000 pipis:earned
+		
+	*mint
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x1.5<.>pipi production +5%
+		icon:icons[1,7]
+		cost:100000 pipis
+		passive:multiply pipi yield of pipiButton by 1.5
+		passive:multiply yield of pipis by 1.05
+		req:50000 pipis:earned
+		
+	*chard
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x1.5<.>pipi production +5%
+		icon:icons[1,8]
+		cost:500000 pipis
+		passive:multiply pipi yield of pipiButton by 1.5
+		passive:multiply yield of pipis by 1.05
+		req:100000 pipis:earned
+		
+	*cherry
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x1.5<.>pipi production +5%
+		icon:icons[1,9]
+		cost:1000000 pipis
+		passive:multiply pipi yield of pipiButton by 1.5
+		passive:multiply yield of pipis by 1.05
+		req:500000 pipis:earned
+		
+	*carrot
+		name:pipi
+		desc:pipi<//><b>Effect:</b><.>pipis/click x2<.>pipi production +10%
+		icon:icons[1,0]
+		cost:100000000 pipis
+		passive:multiply pipi yield of pipiButton by 2
+		passive:multiply yield of pipis by 1.1
+		req:1000000 pipis:earned
+	
+	//building upgrades
+	
+	*buildingUpgrade1
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,0]
+		cost:1000 pipis
+		passive:multiply yield of butty by 2
+		passive:multiply yield of ac by 2
+		passive:multiply yield of krimins by 2
+		req:(buttys>=10 or ac>=10 or krimins>=10)
+		
+	*buildingUpgrade2
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,1]
+		cost:100000 pipis
+		passive:multiply yield of butty by 2
+		passive:multiply yield of ac by 2
+		passive:multiply yield of krimins by 2
+		req:(buttys>=50 or ac>=50 or krimins>=50)
+		
+	*buildingUpgrade3
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,2]
+		cost:5000000 pipis
+		passive:multiply yield of butty by 2
+		passive:multiply yield of ac by 2
+		passive:multiply yield of krimins by 2
+		req:(buttys>=100 or ac>=100 or krimins>=100)
+		
+	*buildingUpgrade4
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,3]
+		cost:50000 pipis
+		passive:multiply yield of durgon by 2
+		passive:multiply yield of kasia by 2
+		req:(durgons>=10 or kasia>=10)
+		
+	*buildingUpgrade5
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,4]
+		cost:5000000 pipis
+		passive:multiply yield of durgon by 2
+		passive:multiply yield of kasia by 2
+		req:(durgons>=50 or kasia>=50)
+		
+	*buildingUpgrade6
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,5]
+		cost:1000000 pipis
+		passive:multiply yield of greeny by 2
+		passive:multiply yield of fox by 2
+		req:(greeny>=10 or fox>=10)
+		
+	*buildingUpgrade7
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,6]
+		cost:500000000 pipis
+		passive:multiply yield of greeny by 2
+		passive:multiply yield of fox by 2
+		req:(greeny>=50 or fox>=50)
+		
+	*buildingUpgrade8
+		name:pipi
+		desc:pipi
+		icon:icons[2,0] icons[3,7]
+		cost:1000000000 pipis
+		passive:multiply yield of fatpy by 2
+		req:10 fatpy
+		
+	//golden carrot upgrades
+	
+	*goldenTouch
+		name:pipi
+		desc:pipi
+		icon:icons[2,5]
+		cost:1 meseta
+		req:1 meseta:earned
+		
+	*rabbitHaste
+		name:pipi
+		desc:pipi
+		icon:icons[2,6]
+		passive:multiply frequency of luckypipi by 0.7
+		cost:5 mesetas
+		req:1 meseta:earned
+	
+	*independenceDay
+		name:pipi
+		desc:pipi
+		icon:icons[2,7]
+		cost:10 mesetas
+		req:5 mesetas:earned
+		
+	*clover
+		name:pipi
+		desc:pipi
+		icon:icons[2,8]
+		cost:100 mesetas
+		req:50 mesetas:earned
+		
+	*moonGardens
+		name:pipi
+		desc:pipi
+		icon:icons[2,9]
+		cost:100 mesetas
+		req:50 mesetas:earned
+		
+Achievements
+	*TEMPLATE
+		on click:anim glow
+		
+	*pipiAchiev1
+		name:pipi
+		desc:Have <b>1</b> pipi.
+		req:1 pipi
+		icon:icons[2,4] icons[0,2] icons[0,6]
+	*pipiAchiev2
+		name:pipi
+		desc:Have <b>1000</b> pipis.
+		req:1000 pipis
+		icon:icons[2,4] icons[0,3] icons[0,6]
+	*pipiAchiev3
+		name:pipi
+		desc:Have <b>1000000</b> pipis.
+		req:10000000 pipis
+		icon:icons[2,4] icons[0,4] icons[0,6]
+		
+	*clickAchiev1
+		name:pipi
+		desc:Click the pipi <b>10</b> times.
+		req:10 pipiButton clicks
+		icon:icons[2,2] icons[0,2] icons[0,6]
+	*clickAchiev2
+		name:pipi
+		desc:Click the pipi <b>100</b> times.
+		req:100 pipiButton clicks
+		icon:icons[2,2] icons[0,3] icons[0,6]
+	*clickAchiev3
+		name:pipi
+		desc:Click the pipi <b>2000</b> times.
+		req:2000 pipiButton clicks
+		icon:icons[2,2] icons[0,4] icons[0,6]
+		
+	*pipiPsAchiev1
+		name:pipi
+		desc:Produce <b>10</b> pipis per second.
+		req:10 pipis per second
+		icon:icons[2,3] icons[0,2] icons[0,6]
+	*pipiPsAchiev2
+		name:pipi
+		desc:Produce <b>1000</b> pipis per second.
+		req:1000 pipis per second
+		icon:icons[2,3] icons[0,3] icons[0,6]
+	*pipiPsAchiev3
+		name:pipi
+		desc:Produce <b>100000</b> pipis per second.
+		req:100000 pipis per second
+		icon:icons[2,3] icons[0,4] icons[0,6]
+		
+	*carrotAchiev1
+		name:pipi
+		desc:Have <b>1</b> pipi
+		req:1 meseta
+		icon:icons[0,1] icons[0,2]
+	*carrotAchiev2
+		name:pipi
+		desc:Have <b>100</b> pipi
+		req:100 meseta
+		icon:icons[0,1] icons[0,3]
+	*carrotAchiev3
+		name:pipi
+		desc:Have <b>1000</b> pipi
+		req:1000 meseta
+		icon:icons[0,1] icons[0,4]
+	
+	*bobAchiev
+		name:pipi
+		desc:bob dead lol <b>freedom bob</b>.<//>bye bob
+		req:100 bob
+		icon:icons[3,8] icons[0,4]
