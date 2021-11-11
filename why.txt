@@ -9,7 +9,7 @@ Let's make a game!
 Settings
 	background:https://cdn.discordapp.com/attachments/555753111348576264/908445205320056852/unknown.png
 	building cost increase:105%
-	building cost refund:100%
+	building cost refund:10000000000%
 	spritesheet:icons, 48 by 48, https://cdn.discordapp.com/attachments/555753111348576264/908458397433729035/kuso.png
 	stylesheet:stuff/basic.css
 
