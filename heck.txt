@@ -423,8 +423,8 @@ Achievements
 		req:1000 meseta
 		icon:icons[0,1] icons[0,4]
 	
-	*fortressAchiev
+	*bobAchiev
 		name:pipi
-		desc:bob dead lol <b>freedom fortress</b>.<//>bye bob
-		req:100 fortress
+		desc:bob dead lol <b>freedom bob</b>.<//>bye bob
+		req:100 bob
 		icon:icons[3,8] icons[0,4]
